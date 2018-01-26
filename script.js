@@ -23,7 +23,7 @@ $( document ).ready(function() {
   function setTime() {
     textTime.text(time);
     textHex.text(hexValue);
-    page.css('background-color', hexValue);
+    page.css('background', hexValue);
   }
 
   function getTime() {
