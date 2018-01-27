@@ -6,6 +6,11 @@
   -moz-font-smoothing: antialiased !important;
   text-rendering: optimizelegibility !important;
   letter-spacing: .03em;
+  cursor: default;
+}
+
+*:focus {
+  outline:0;
 }
 
 html, body {
@@ -68,11 +73,11 @@ html, body {
   -webkit-filter: blur(0.2px);
   -moz-filter: blur(0.2px);
   filter: blur(0.2px);
-
 }
 
 #settings_icon:hover {
   opacity: 0.4;
+  cursor: pointer;
 }
 
 #settings_menu {
@@ -94,6 +99,7 @@ html, body {
   padding-left: 35px;
   padding-right: 35px;
   border-radius: 60px;
+  margin-bottom: 10px;
 }
 
 .setting_name {
@@ -101,6 +107,22 @@ html, body {
   display: inline-block;
   margin: 0 auto;
   margin-top: 7px;
+  padding-right: 5px;
+}
+
+input {
+  font-size: 20px;
+  font-weight: 200;
+  border: 0px solid rgb(255,255,255);
+  background-color: rgba(255,255,255, .0);
+  color: rgb(255,255,255);
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+  height: 30px;
+  width: 30px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 input[type=checkbox]{
@@ -145,4 +167,51 @@ input:checked + label:after {
 label:active:after {
   width: 15px;
 }
+
+input:hover {
+  cursor: text;
+}
+
+#timer_title {
+  display: block;
+  text-align: center;
+}
+
+#timer {
+  width: 114px;
+  height: auto;
+  margin: 0 auto;
+  margin-bottom: 5px;
+}
+
+.text {
+  color: #fff;
+  display: inline-block;
+  margin: 0 auto;
+  margin-top: 7px;
+  text-align: center;
+}
+
+#startTimer, #pauseTimer  {
+  width: 100px;
+  height: 20px;
+  padding: 0;
+  display: inline-block;
+  text-align: center;
+
+  -webkit-transition:background-color 0.5s;
+  -moz-transition:background-color 0.5s;
+  -o-transition:background-color 0.5s;
+  transition:background-color 0.5s
+}
+
+#startTimer:hover, #pauseTimer:hover {
+  background-color: rgba(170, 170, 170, 0.4);
+  cursor: pointer;
+}
+
+#startTimer .text:hover, #pauseTimer .text:hover {
+  cursor: pointer;
+}
+
 
