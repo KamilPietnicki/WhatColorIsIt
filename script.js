@@ -6,6 +6,8 @@ $( document ).ready(function() {
   var textHex        = $('#hex');
   var settingsButton = $('#settings_icon');
   var settingsMenu   = $('#settings_menu');
+  var timerStart     = $('#startTimer');
+  var timerPause     = $('#pauseTimer');
 
   //Setting variables
   var setting_doubleColour   = $('#doubleColour');
@@ -20,11 +22,20 @@ $( document ).ready(function() {
   var minutes;
   var seconds;
 
+  var timerHours   = 0;
+  var timerMinutes = 0;
+  var timerSeconds = 0;
+
   //Other variables
+  var alarmSound   = document.createElement('audio');
   var hexValue;
   var timeout      = null;
+  var timerInterval;
+
   var menuClicked  = false;
   var doubleColour = false;
+  var startClicked = false;
+  var pauseClicked = false;
 
   //Initial function calls
   getTime();
@@ -136,6 +147,143 @@ $( document ).ready(function() {
     }
   });
 
+  //Prevent input of letterns & symbols into timer
+  setting_inputHours.add
+  (setting_inputMinutes).add
+  (setting_inputSeconds).on('input' ,function (e) { 
+    e.preventDefault();
+
+    var value = $(this).val();
+    
+    if (!value.match(/^\d+$/)) {
+      $(this).val("00");
+    }
+
+    timerHours   = parseInt(setting_inputHours.val());
+  });
+
+  //Set minutes & seconds to 59 if more than 60
+  setting_inputMinutes.add
+  (setting_inputSeconds).on('input' ,function (e) { 
+    e.preventDefault();
+
+    var value = $(this).val();
+    var number = parseInt(value);
+
+    if (number >= 60) {
+      $(this).val("59");
+    }
+
+    timerMinutes = parseInt(setting_inputMinutes.val());
+    timerSeconds = parseInt(setting_inputSeconds.val());
+  });
+
+  //handles timer start/reset button
+  timerStart.click(function () { 
+    if (startClicked) {
+      timerStart.find('p').text("Start");
+      startClicked = false;
+
+      resetTimer();
+    }
+
+    else {
+      timerStart.find('p').text("Reset");
+      startClicked = true;
+
+      startTimer();
+    }
+  });
+
+  //handles timer pause/resume button
+  timerPause.click(function () { 
+    if (pauseClicked) {
+      timerPause.find('p').text("Pause");
+      pauseClicked = false;
+
+      resumeTimer();
+    }
+
+    else {
+      timerPause.find('p').text("Resume");
+      pauseClicked = true;
+
+      pauseTimer();
+    }
+  });
+
+  function startTimer() {
+    timerInterval = setInterval(startCountdown, 1000);
+  }
+
+  function resetTimer() {
+    clearInterval(timerInterval);
+
+    timerHours   = "00";
+    timerMinutes = "00";
+    timerSeconds = "00";
+
+    setting_inputHours.val(timerHours);
+    setting_inputMinutes.val(timerMinutes);
+    setting_inputSeconds.val(timerSeconds);
+  }
+
+  function pauseTimer() {
+    clearInterval(timerInterval);
+  }
+
+  function resumeTimer() {
+    timerInterval = setInterval(startCountdown, 1000);
+  }
+
+  //counts down all the values in the timer
+  function startCountdown() {
+    timerSeconds--;
+    timerSeconds = minTwoDigits(timerSeconds);
+    setting_inputSeconds.val(timerSeconds);
+
+    if (timerSeconds == "0-1") {
+
+      if (timerHours == "00" && timerMinutes == "00") {
+        clearInterval(timerInterval);
+
+        timerSeconds = "00";
+        setting_inputSeconds.val(timerSeconds);
+
+        playAlarm();
+      }
+
+      else if (timerMinutes > 0) {
+        timerMinutes--;
+        timerMinutes = minTwoDigits(timerMinutes);
+        setting_inputMinutes.val(timerMinutes);
+
+        timerSeconds = 59;
+        setting_inputSeconds.val(timerSeconds);
+      }
+
+      else if (timerHours > 0) {
+        timerHours--;
+        timerHours = minTwoDigits(timerHours);
+        setting_inputHours.val(timerHours);
+
+        timerMinutes = 59;
+        setting_inputMinutes.val(timerMinutes);
+
+        timerSeconds = 59;
+        setting_inputSeconds.val(timerSeconds);
+      }
+
+    }
+  }
+
+  //Plays alarm sound
+  function playAlarm() {
+    alarmSound.setAttribute('src', 'stuff/alarm.mp3');
+    alarmSound.play();
+  }
+
+
   //Fades out settings icon when the mouse is idle
   $(document).on('mousemove', function() {
     if (timeout !== null) {
@@ -153,6 +301,6 @@ $( document ).ready(function() {
       if (menuClicked) {
         settingsMenu.fadeOut(500);
       }
-    }, 5000);
+    }, 10000);
   });
 });
