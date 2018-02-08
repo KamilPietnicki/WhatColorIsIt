@@ -4,15 +4,6 @@
 <!--[if IE 8]><html class="preIE9"><![endif]-->
 <!--[if gte IE 9]><!--><html><!--<![endif]-->
   <head>
-    <!-- Google Tag Manager -->
-    <script>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-W7J8HNW');
-    </script>
-    <!-- End Google Tag Manager -->
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113131387-1"></script>
     <script>
@@ -29,28 +20,25 @@
     <meta name="author" content="Kamil Pietnicki">
     <meta name="description" content="What color is it? Time will tell.">
     <meta name="keywords" content="time, colour, color, pretty, beautiful, minimal, ambient, hex, hex code, relax">
-    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:200,300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Brush+Script|Monoton|Crete+Round|Enriqueta|Quattrocento+Sans|Titillium+Web:200" rel="stylesheet">
     <link rel="stylesheet" href="style.css" type="text/css">
     <link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="script.js" type="text/javascript"></script>
   </head>
   <body>
-
-    <!-- Google Tag Manager (noscript) -->
-    <noscript>
-      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W7J8HNW" height="0" width="0" style="display:none;visibility:hidden"></iframe>
-    </noscript>
-    <!-- End Google Tag Manager (noscript) -->
-
     <div id="background">
       <img src="stuff/settings.png" id="settings_icon">
       <div id="settings_menu">
+
+        <!-- DOUBLE COLOUR INTENSITY -->
         <div class="setting_container">
           <p class="setting_name">Double Colour Intensity</p>
           <input type="checkbox" id="doubleColour" /><label for="doubleColour">Toggle</label>
         </div>
-       <div class="setting_container">
+
+        <!-- TIMER -->
+        <div class="setting_container">
           <p class="setting_name" id="timer_title">Timer</p>
           <div id="timer">
             <input id="field-timer-hours"   value="00" maxlength="2" min="0">
@@ -66,6 +54,38 @@
             <p class="text">Pause</p>
           </div>
         </div>
+
+        <!-- CHANGE FONT -->
+        <div class="setting_container" id="font_setting">
+          <p class="setting_name" id="change_font">Change Clock Font</p>
+          <button class="arrow_dropDown">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="20px" viewBox="0 0 50 80" xml:space="preserve">
+              <polyline fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" points="
+            0.375,0.375 45.63,38.087 0.375,75.8 "/>
+            </svg>
+          </button>
+          <div id="fonts_container">
+            <div class="font_option_container font_selected" data-id="font-1">
+              <p class="font_option" id="titillium_web">Titillium Web</p>
+            </div>
+            <div class="font_option_container" data-id="font-2">
+              <p class="font_option" id="quattrocento_sans">Quattrocento Sans</p>
+            </div>
+            <div class="font_option_container" data-id="font-3">
+              <p class="font_option" id="enriqueta">Enriqueta</p>
+            </div>
+            <div class="font_option_container" data-id="font-4">
+                <p class="font_option" id="crete_round">Crete Round</p>
+            </div>  
+            <div class="font_option_container" data-id="font-5">
+                <p class="font_option" id="monoton">Monoton</p>
+            </div>
+            <div class="font_option_container" data-id="font-6">
+                <p class="font_option" id="nanum_brush_script">Nanum Brush Script</p>
+            </div>
+          </div>
+        </div>
+
       </div>
       <p id="text"></p>
       <p id="hex"></p>

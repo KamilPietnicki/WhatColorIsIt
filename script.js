@@ -1,13 +1,16 @@
 $( document ).ready(function() {
 
   //Key DOM elements variables
-  var page           = $('#background');
-  var textTime       = $('#text');
-  var textHex        = $('#hex');
-  var settingsButton = $('#settings_icon');
-  var settingsMenu   = $('#settings_menu');
-  var timerStart     = $('#startTimer');
-  var timerPause     = $('#pauseTimer');
+  var page                  = $('#background');
+  var textTime              = $('#text');
+  var textHex               = $('#hex');
+  var settingsButton        = $('#settings_icon');
+  var settingsMenu          = $('#settings_menu');
+  var timerStart            = $('#startTimer');
+  var timerPause            = $('#pauseTimer');
+  var arrow_dropDown        = $('.arrow_dropDown');
+  var fontsContainer        = $('#fonts_container');
+  var fontOptionContainer   = $('.font_option_container');
 
   //Setting variables
   var setting_doubleColour   = $('#doubleColour');
@@ -31,15 +34,18 @@ $( document ).ready(function() {
   var hexValue;
   var timeout      = null;
   var timerInterval;
+  // var selectedFont;
 
-  var menuClicked  = false;
-  var doubleColour = false;
-  var startClicked = false;
-  var pauseClicked = false;
+  var menuClicked         = false;
+  var doubleColour        = false;
+  var startClicked        = false;
+  var pauseClicked        = false;
+  var fontsContainerOpen  = false;
 
   //Initial function calls
   getTime();
   setTime();
+  changeFont();
 
   //Calls functions every 10ms
   setInterval(function() {
@@ -282,6 +288,82 @@ $( document ).ready(function() {
     alarmSound.setAttribute('src', 'stuff/alarm.mp3');
     alarmSound.play();
   }
+
+  arrow_dropDown.click(function () { 
+    if (fontsContainerOpen) {
+      fontsContainer.slideUp();
+      fontsContainerOpen = false;
+    }
+
+    else {
+      fontsContainer.slideDown();
+      fontsContainerOpen = true;
+    }
+
+    
+  });
+
+  fontOptionContainer.click(function () { 
+    var activated = $(this).hasClass("font_selected");
+    var selectedFont  = $(this).attr("data-id") ;
+
+    localStorage.setItem("selectedFont", selectedFont);
+
+    if (!activated) {
+      fontOptionContainer.removeClass("font_selected");
+      $(this).addClass("font_selected");
+      changeFont();
+    }
+
+  });
+
+  function changeFont() {
+    var selectedFont = localStorage.getItem("selectedFont");
+
+    switch(selectedFont) {
+      case "font-1":
+        textTime.css('font-family', 'Titillium Web');
+        textHex.css('font-family', 'Titillium Web');
+        break;
+
+      case "font-2":
+        textTime.css('font-family', 'Quattrocento Sans');
+        textHex.css('font-family', 'Quattrocento Sans');
+        break;
+
+      case "font-3":
+        textTime.css('font-family', 'Enriqueta');
+        textHex.css('font-family', 'Enriqueta');
+        break;
+
+      case "font-4":
+        textTime.css('font-family', 'Create Round');
+        textHex.css('font-family', 'Create Round');
+        break;
+
+      case "font-5":
+        textTime.css('font-family', 'Monoton');
+        textHex.css('font-family', 'Monoton');
+        break;
+
+      case "font-6":
+        textTime.css('font-family', 'Nanum Brush Script');
+        textHex.css('font-family', 'Nanum Brush Script');
+        break;
+    }
+  }
+
+
+  fontOptionContainer.each(function(i) {
+    var data = $(this).attr("data-id");
+    var selectedFont = localStorage.getItem("selectedFont");
+
+    if (selectedFont =! null && selectedFont == data) {
+      fontOptionContainer.removeClass("font_selected");
+      $(this).addClass("font_selected");
+    }
+  });
+
 
 
   //Fades out settings icon when the mouse is idle

@@ -1,6 +1,5 @@
 * {
   font-family: 'Titillium Web', sans-serif;
-  font-weight: 200;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased !important;
   -moz-font-smoothing: antialiased !important;
@@ -88,6 +87,7 @@ html, body {
   margin-top: 40px;
   margin-left: calc(100% - 380px);
   display: none;
+  z-index: 100;
 }
 
 .setting_container {
@@ -98,7 +98,7 @@ html, body {
   min-height: 40px;
   padding-left: 35px;
   padding-right: 35px;
-  border-radius: 60px;
+  border-radius: 0px;
   margin-bottom: 10px;
 }
 
@@ -214,4 +214,114 @@ input:hover {
   cursor: pointer;
 }
 
+#change_font {
+  text-align: center;
+  padding: 0;
+  padding-left: 35px;
+}
+
+#fonts_container {
+  display: none;
+  width: auto;
+  height: auto;
+  max-width: 280px;
+  padding: 0;
+}
+
+#font_setting {
+  padding: 0;
+}
+
+.font_option_container {
+  height: 40px;
+  margin-top: 10px;
+  vertical-align: middle;
+
+  -webkit-transition:background-color 0.5s;
+  -moz-transition:background-color 0.5s;
+  -o-transition:background-color 0.5s;
+  transition:background-color 0.5s
+}
+
+.font_option {
+  color: #fff;
+  height: 30px;
+  position: realtive;
+  padding-left: 35px;
+  margin: 0;
+  text-align:left;
+}
+
+.font_option_container:hover {
+  background-color: rgba(170, 170, 170, 0.2);
+  cursor: pointer;
+}
+
+.font_selected {
+  background-color: rgba(170, 170, 170, 0.4);
+}
+
+#titillium_web {
+  font-family: 'Titillium Web', sans-serif;
+  padding-top: 8px;
+}
+
+#quattrocento_sans {
+  font-family: 'Quattrocento Sans', sans-serif;
+  padding-top: 12px;
+}
+
+#enriqueta {
+  font-family: 'Enriqueta', sans-serif;
+  padding-top: 8px;
+}
+
+#crete_round {
+  font-family: 'Create Round', sans-serif;
+  padding-top: 12px;
+}
+
+#monoton {
+  font-family: 'Monoton', sans-serif;
+  padding-top: 8px;
+}
+
+#nanum_brush_script {
+  font-family: 'Nanum Brush Script', sans-serif;
+  margin: 0;
+  padding-bottom: 20px;
+  padding-top: 6px;
+  font-size: 26px;
+}
+
+
+button {
+  -webkit-appearance: none;
+  background: transparent;
+  border: 0;
+  outline:0;
+  cursor: pointer;
+}
+
+svg {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.arrow_dropDown {
+  cursor: pointer;
+  position: absolute;
+  top: 175px;
+  left: 200px;
+  transform: rotate(90deg);
+}
+
+.arrow_dropDown:hover polyline {
+  stroke-width: 8;
+}
+
+polyline {
+  cursor: pointer;
+  transition: all 250ms ease-in-out;
+}
 
