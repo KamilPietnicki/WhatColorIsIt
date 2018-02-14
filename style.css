@@ -65,6 +65,7 @@ html, body {
   position: absolute;
   transition: opacity 0.5s;
 
+  backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   -webkit-transform: translateZ(0) scale(1.0, 1.0);
   transform: translateZ(0);
@@ -266,32 +267,35 @@ input:hover {
   padding-top: 8px;
 }
 
-#quattrocento_sans {
-  font-family: 'Quattrocento Sans', sans-serif;
-  padding-top: 12px;
+#archivo_black {
+  font-family: 'Archivo Black', sans-serif;
+  padding-top: 9px;
 }
 
-#enriqueta {
-  font-family: 'Enriqueta', sans-serif;
-  padding-top: 8px;
+#caveat {
+  font-family: 'Caveat', sans-serif;
+  font-size: 24px;
+  padding-top: 4px;
 }
 
-#crete_round {
-  font-family: 'Create Round', sans-serif;
-  padding-top: 12px;
+#iceberg {
+  font-family: 'Iceberg', sans-serif;
+  padding-top: 10px;
+  font-size: 19px;
 }
 
-#monoton {
-  font-family: 'Monoton', sans-serif;
-  padding-top: 8px;
+#space_mono {
+  font-family: 'Space Mono', sans-serif;
+  padding-top: 6px;
+  font-size: 19px;
 }
 
-#nanum_brush_script {
-  font-family: 'Nanum Brush Script', sans-serif;
+#stardos_stencil {
+  font-family: 'Stardos Stencil', sans-serif;
   margin: 0;
   padding-bottom: 20px;
-  padding-top: 6px;
-  font-size: 26px;
+  padding-top: 8px;
+  font-size: 20px;
 }
 
 

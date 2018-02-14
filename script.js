@@ -327,28 +327,28 @@ $( document ).ready(function() {
         break;
 
       case "font-2":
-        textTime.css('font-family', 'Quattrocento Sans');
-        textHex.css('font-family', 'Quattrocento Sans');
+        textTime.css('font-family', 'Archivo Black');
+        textHex.css('font-family', 'Archivo Black');
         break;
 
       case "font-3":
-        textTime.css('font-family', 'Enriqueta');
-        textHex.css('font-family', 'Enriqueta');
+        textTime.css('font-family', 'Caveat');
+        textHex.css('font-family', 'Caveat');
         break;
 
       case "font-4":
-        textTime.css('font-family', 'Create Round');
-        textHex.css('font-family', 'Create Round');
+        textTime.css('font-family', 'Iceberg');
+        textHex.css('font-family', 'Iceberg');
         break;
 
       case "font-5":
-        textTime.css('font-family', 'Monoton');
-        textHex.css('font-family', 'Monoton');
+        textTime.css('font-family', 'Space Mono');
+        textHex.css('font-family', 'Space Mono');
         break;
 
       case "font-6":
-        textTime.css('font-family', 'Nanum Brush Script');
-        textHex.css('font-family', 'Nanum Brush Script');
+        textTime.css('font-family', 'Stardos Stencil');
+        textHex.css('font-family', 'Stardos Stencil');
         break;
     }
   }
