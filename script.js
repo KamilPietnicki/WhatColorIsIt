@@ -303,6 +303,7 @@ $( document ).ready(function() {
     
   });
 
+  //Save selected font into browser
   fontOptionContainer.click(function () { 
     var activated = $(this).hasClass("font_selected");
     var selectedFont  = $(this).attr("data-id") ;
@@ -317,6 +318,7 @@ $( document ).ready(function() {
 
   });
 
+  //Change to selected font
   function changeFont() {
     var selectedFont = localStorage.getItem("selectedFont");
 
@@ -353,7 +355,7 @@ $( document ).ready(function() {
     }
   }
 
-
+  
   fontOptionContainer.each(function(i) {
     var data = $(this).attr("data-id");
     var selectedFont = localStorage.getItem("selectedFont");
